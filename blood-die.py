@@ -17,12 +17,12 @@ def main(argv):
 	langWithWord=namedtuple('langWithWord','language, langClass,bloodWords,dieWords')
 	simiLangList=[langWithWord(attr[0],attr[1],attr[2].strip().split(', '),attr[3].strip().split(', ')) for attr in langList]
 	
-	resList=[]
+	resDict={}
 	for item in simiLangList:
 		for text in item.bloodWords:
 			if text in item.dieWords:
-				resList.append([item.language,item.langClass])
-	print(resList)
+				resDict[item.language]=item.langClass
+	print(resDict)
 
 if __name__=="__main__":
 	main(sys.argv)
